@@ -5,7 +5,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import datetime
 
-title = st.title("Technical Assistance Tool")
+title = st.title("*Technical Assistance Tool*")
 st.markdown("""MWP EMTCT Team""")
 
 # Use session_state keys for each widget so we can reset them after submission
@@ -106,6 +106,7 @@ if submit:
 
 st.markdown("""---""")
        
+
 
 
 
