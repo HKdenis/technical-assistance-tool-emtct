@@ -5,8 +5,8 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import datetime
 
-title = st.title("*Technical Assistance Tool*")
-st.markdown("""MWP EMTCT Team""")
+title = st.title("*Technical Assistance/Mentorship Report*")
+st.markdown("""*MWP EMTCT Team*""")
 
 # Use session_state keys for each widget so we can reset them after submission
 selected_date = st.date_input("VISIT DATE:", format="DD/MM/YYYY", key="visit_date", value=datetime.date.today())
@@ -101,11 +101,12 @@ if submit:
         "action_plan": "",
         "follow_up_date": datetime.date.today()
     }
-    for k, v in defaults.items():
-        st.session_state[k] = v
+    for key, value in defaults.items():
+        st.session_state[key] = value
 
 st.markdown("""---""")
        
+
 
 
 
