@@ -102,10 +102,11 @@ if submit:
         "follow_up_date": datetime.date.today()
     }
     for k, v in defaults.items():
-        st.session_state(k) = v
+        st.session_state[k] = v
 
 st.markdown("""---""")
        
+
 
 
 
