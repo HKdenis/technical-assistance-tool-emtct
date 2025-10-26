@@ -21,7 +21,7 @@ facility_select = st.selectbox("HEALTH FACILITY:", [" ", "Bigasa Health center I
 "Mulabana Health Centre II", "Ssese Islands African Aids Project Health Centre II", "AHF Uganda Care", "Bukulula Health Centre IV", "Kabaale Health Centre III", "Kalungu Health Centre III", "Kasambya Health[...]", 
 "MRC Kyamulibwa Health Centre II", "Nabutongwa Health Centre II", "Kabira Health Centre III", "Kabuwoko Govt Health Centre III", "Kakuuto Health Centre IV", "Kalisizo General Hospital", "Kasaali Health Cent[...]", 
 "Mitukula Health Centre III", "Mutukula Health Centre III", "Nabigasa Health Centre III", "Ndolo Health Centre II", "Rakai Health Sciences Program Clinic", "Kakoma Health Centre III", "Katovu Health Centre [...]", 
-"Kabayanda Health Centre II", "Kaliiro Health Centre III", "Kasagama Health Centre III", "Kinuuka Health Centre III", "Kyemamba Health Centre II", "Lyakajura Health Centre III", "Lyantonde General Hospital"[...], 
+"Kabayanda Health Centre II", "Kaliiro Health Centre III", "Kasagama Health Centre III", "Kinuuka Health Centre III", "Kyemamba Health Centre II", "Lyakajura Health Centre III", "Lyantonde General Hospital", 
 "Masaka Municipal Clinic", "Masaka Police Health Centre III", "Mpugwe Health Centre III", "Nyendo Health Centre III", "TASO Masaka", "Bukakata Health Centre III",
 "Bukeeri Health Centre III", "Buwunga Health Centre III", "Buyaga Health Centre II", "Kamulegu Health Centre III", "Kyanamukaaka Health Centre IV", "Bujuuko Health Centre III", "Bukasa Health Centre II", "Bu[...]", 
 "Buwama Health Centre III", "Buyiga Health Centre III", "Dona Carnevale Medical Centre", "Fiduga Medical Centre", "Ggolo Health Centre III",
@@ -106,6 +106,7 @@ if submit:
 
 st.markdown("""---""")
        
+
 
 
 
