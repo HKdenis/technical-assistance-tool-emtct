@@ -11,7 +11,7 @@ st.markdown("""MWP EMTCT Team""")
 # Use session_state keys for each widget so we can reset them after submission
 selected_date = st.date_input("VISIT DATE:", format="DD/MM/YYYY", key="visit_date", value=datetime.date.today())
 
-district_select = st.selectbox("SELECT DISTRICT:", [" ", "Bukomansimbi", "Butambala", "Gomba", "Kalungu", "Kyotera", "Lwengo", "Masaka City", "Mpigi", "Masaka Dist", "Kalangala", "Rakai", "Sembabule", "Wakiso",], key="select_district")
+district_select = st.selectbox("SELECT DISTRICT:", [" ", "Bukomansimbi", "Butambala", "Gomba", "Kalungu", "Kyotera", "Lwengo", "Masaka City", "Mpigi", "Masaka Dist", "Kalangala", "Rakai", "Sembabule", "Wakiso",], key="district")
 
 facility_select = st.selectbox("HEALTH FACILITY:", [" ", "Bigasa Health center III", "Butenga Health center III", "Kagoggo Health Centre II", "Kigangazzi Health Centre II",
 "Kisojjo Health Centre II", "Kitanda Health Centre III", "Mirambi Health Centre III", "St. Mary's Maternity & Nursing Home", "Bulo Health Centre III", "Butaaka Health Centre III", "Epi-CentreSenge Health Ce[...]", 
@@ -102,10 +102,11 @@ if submit:
         "follow_up_date": datetime.date.today()
     }
     for k, v in defaults.items():
-        st.session_state[k] = v
+        st.session_state(k) = v
 
 st.markdown("""---""")
        
+
 
 
 
