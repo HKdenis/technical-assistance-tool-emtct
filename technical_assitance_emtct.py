@@ -101,11 +101,12 @@ if submit:
         "action_plan": "",
         "follow_up_date": datetime.date.today()
     }
-    for key, value in defaults.items():
-        st.session_state[key] = value
+    for k, v in defaults.items():
+        st.session_state[k] = v
 
 st.markdown("""---""")
        
+
 
 
 
