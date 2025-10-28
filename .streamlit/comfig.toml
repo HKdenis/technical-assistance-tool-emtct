@@ -5,3 +5,6 @@ backgroundColor = "#F0F2F6" # Background color for the main content area.
 secondaryBackgroundColor = "#FFFFFF" # Background color for areas within widgets.
 textColor = "#303030" # Color of the text.
 font = "sans serif" # Font family for the app. Options: "sans serif", "serif", "monospace".
+[theme]
+base="light"
+backgroundColor="#d3ecf3"
