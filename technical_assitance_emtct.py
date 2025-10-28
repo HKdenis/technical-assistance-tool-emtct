@@ -14,7 +14,7 @@ st.markdown(
     """
     <style>
     .custom-title {
-        font-size: 48px; /* Adjust the desired font size */
+        font-size: 240px; /* Adjust the desired font size */
         font-weight: bold;
         color: #333333;
     }
@@ -148,6 +148,7 @@ if submit:
 # ...existing code...
 st.markdown("""---""")
        
+
 
 
 
