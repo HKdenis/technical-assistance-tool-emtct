@@ -6,6 +6,8 @@ import pyarrow.parquet as pq
 import datetime
 import os
 
+st.markdown("<h4><b>TECHNICAL ASSISTANCE&MENTORSHIP REPORT</b></h4>", unsafe_allow_html=True)
+
 title = st.title("Technical Assistance/Mentorship Report")
 st.markdown("""*MWP EMTCT Team*""")
 
@@ -132,6 +134,7 @@ if submit:
 # ...existing code...
 st.markdown("""---""")
        
+
 
 
 
