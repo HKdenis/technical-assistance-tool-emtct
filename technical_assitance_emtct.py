@@ -4,6 +4,7 @@ import numpy as np
 import pyarrow as pa
 import pyarrow.parquet as pq
 import datetime
+import os
 
 title = st.title("Technical Assistance/Mentorship Report")
 st.markdown("""*MWP EMTCT Team*""")
@@ -81,18 +82,30 @@ if submit:
         "ACTION PLAN": st.session_state.get("action_plan"),
         "FOLLOW-UP DATE": st.session_state.get("follow_up_date")
     }
-    df = pd.DataFrame([data])
-    table = pa.Table.from_pandas(df)
-    pq.write_to_dataset(table, root_path='emtct_reports.parquet', partition_cols=['DISTRICT', 'HEALTH FACILITY'], existing_data_behavior='overwrite_or_ignore')
 
-    st.success("Report Submitted Successfully")
+    df = pd.DataFrame([data])
+    table = pa.Table.from_pandas(df, preserve_index=False)
+
+    out_dir = "emtct_reports.parquet"  # directory to store dataset partitions
+    os.makedirs(out_dir, exist_ok=True)
+
+    try:
+        pq.write_to_dataset(
+            table,
+            root_path=out_dir,
+            partition_cols=["DISTRICT", "HEALTH FACILITY"],
+            existing_data_behavior="overwrite_or_ignore"
+        )
+        st.success("Report Submitted Successfully")
+    except Exception as e:
+        st.error(f"Failed to save report: {e}")
 
     # Reset form fields to defaults so the form appears cleared after submit
     defaults = {
         "visit_date": datetime.date.today(),
-        "district": " ",
-        "health_facility": " ",
-        "mentor": " ",
+        "district": "",
+        "health_facility": "",
+        "mentor": "",
         "additional_mentor": "",
         "facility_team": "",
         "purpose": "",
@@ -101,11 +114,14 @@ if submit:
         "action_plan": "",
         "follow_up_date": datetime.date.today()
     }
-    #for k, v in defaults.items():
-        #st.session_state[k] = v
+    st.session_state.update(defaults)
+
+st.markdown("""---""")
+# ...existing code...
 
 st.markdown("""---""")
        
+
 
 
 
