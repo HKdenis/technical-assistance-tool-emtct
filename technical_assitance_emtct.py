@@ -5,6 +5,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import datetime
 import os
+import sqlite3
 
 st.markdown("<h4><b>TECHNICAL ASSISTANCE _ MENTORSHIP REPORT & TRACKER</b></h4>", unsafe_allow_html=True)
 st.markdown("""*EMTCT*""")
@@ -83,23 +84,57 @@ if submit:
         "FOLLOW-UP DATE": st.session_state.get("follow_up_date")
     }
 
-    df = pd.DataFrame([data])
-    table = pa.Table.from_pandas(df, preserve_index=False)
+# Define the path to your SQLite database file
+# Ensure this path is correct relative to your Streamlit app or an absolute path
+DATABASE_FILE = "my_database.db" 
 
-    out_dir = "emtct_reports.parquet"  # directory to store dataset partitions
-    os.makedirs(out_dir, exist_ok=True)
-
+def create_connection(db_file):
+    """Create a database connection to the SQLite database specified by db_file."""
+    conn = None
     try:
-        pq.write_to_dataset(
-            table,
-            root_path=out_dir,
-            partition_cols=["DISTRICT", "HEALTH FACILITY"],
-            existing_data_behavior="overwrite_or_ignore"
-        )
-        st.success("Report Submitted Successfully")
-    except Exception as e:
-        st.error(f"Failed to save report: {e}")
+        conn = sqlite3.connect(db_file)
+        return conn
+    except sqlite3.Error as e:
+        st.error(f"Error connecting to database: {e}")
+    return conn
 
+def get_data(conn):
+    """Fetch all data from a table (e.g., 'my_table')."""
+    query = "SELECT * FROM my_table" # Replace 'my_table' with your table name
+    try:
+        df = pd.read_sql_query(query, conn)
+        return df
+    except pd.io.sql.DatabaseError as e:
+        st.error(f"Error executing query: {e}")
+        return pd.DataFrame()
+
+# Streamlit app
+st.title("Streamlit and SQLite Integration")
+
+conn = create_connection(DATABASE_FILE)
+
+if conn:
+    st.success(f"Successfully connected to {DATABASE_FILE}")
+
+    # Display data from the database
+    st.subheader("Data from 'my_table':")
+    data_df = get_data(conn)
+    st.dataframe(data_df)
+
+    # Example of inserting data (uncomment to use)
+    # if st.button("Add Sample Data"):
+    #     try:
+    #         cursor = conn.cursor()
+    #         cursor.execute("INSERT INTO my_table (column1, column2) VALUES (?, ?)", ("value1", "value2"))
+    #         conn.commit()
+    #         st.success("Sample data added!")
+    #         st.experimental_rerun() # Refresh to show new data
+    #     except sqlite3.Error as e:
+    #         st.error(f"Error adding data: {e}")
+
+    conn.close()
+else:
+    st.warning("Could not connect to the database. Please check the file path.")
    # ...existing code...
     # Reset form fields to defaults so the form appears cleared after submit
     defaults = {
@@ -132,6 +167,7 @@ if submit:
 # ...existing code...
 st.markdown("""---""")
        
+
 
 
 
