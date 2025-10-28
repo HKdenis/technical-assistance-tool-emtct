@@ -8,7 +8,6 @@ import os
 
 st.markdown("<h4><b>TECHNICAL ASSISTANCE&MENTORSHIP REPORT</b></h4>", unsafe_allow_html=True)
 
-title = st.title("Technical Assistance/Mentorship Report")
 st.markdown("""*MWP EMTCT Team*""")
 
 # Use session_state keys for each widget so we can reset them after submission
@@ -134,6 +133,7 @@ if submit:
 # ...existing code...
 st.markdown("""---""")
        
+
 
 
 
