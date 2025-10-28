@@ -120,9 +120,9 @@ if submit:
     for k, v in defaults.items():
         try:
             st.session_state[k] = v
-        except Exception:
+        #except Exception:
             # skip keys that cannot be set during this run
-            pass
+            #pass
 
     # optional: force a rerun to ensure widgets reflect the cleared state
     try:
@@ -132,6 +132,7 @@ if submit:
 # ...existing code...
 st.markdown("""---""")
        
+
 
 
 
