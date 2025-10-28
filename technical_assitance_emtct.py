@@ -6,43 +6,28 @@ import pyarrow.parquet as pq
 import datetime
 import os
 
-title = st.title("Technical Assistance/Mentorship Report")
-st.markdown("""*MWP EMTCT Team*""")
-
-st.markdown(
-    """
-    <style>
-    .custom-title {
-        font-size: 240px; /* Adjust the desired font size */
-        font-weight: bold;
-        color: #333333;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
-st.markdown('<p class="custom-title">Technical Assistance/Mentorship Report</p>', unsafe_allow_html=True)
+st.markdown("<h4><b>TECHNICAL ASSISTANCE _ MENTORSHIP REPORT & TRACKER</b></h4>", unsafe_allow_html=True)
+st.markdown("""*EMTCT*""")
 
 # Use session_state keys for each widget so we can reset them after submission
 selected_date = st.date_input("VISIT DATE:", format="DD/MM/YYYY", key="visit_date", value=datetime.date.today())
 
-district_select = st.selectbox("SELECT DISTRICT:", [" ", "Bukomansimbi", "Butambala", "Gomba", "Kalungu", "Kyotera", "Lwengo", "Masaka City", "Mpigi", "Masaka Dist", "Kalangala", "Rakai", "Sembabule", "Wakiso",], key="district")
+district_select = st.selectbox("SELECT DISTRICT:", ["Bukomansimbi", "Butambala", "Gomba", "Kalungu", "Kyotera", "Lwengo", "Masaka City", "Mpigi", "Masaka Dist", "Kalangala", "Rakai", "Sembabule", "Wakiso",], key="district")
 
-facility_select = st.selectbox("HEALTH FACILITY:", [" ", "Bigasa Health center III", "Butenga Health center III", "Kagoggo Health Centre II", "Kigangazzi Health Centre II",
-"Kisojjo Health Centre II", "Kitanda Health Centre III", "Mirambi Health Centre III", "St. Mary's Maternity & Nursing Home", "Bulo Health Centre III", "Butaaka Health Centre III", "Epi-CentreSenge Health Ce[...]", 
+facility_select = st.selectbox("HEALTH FACILITY:", ["Bigasa Health center III", "Butenga Health center III", "Kagoggo Health Centre II", "Kigangazzi Health Centre II",
+"Kisojjo Health Centre II", "Kitanda Health Centre III", "Mirambi Health Centre III", "St. Mary's Maternity & Nursing Home", "Bulo Health Centre III", "Butaaka Health Centre III", "Epi-CentreSenge Health Centre", 
 "Kalamba Community Health Centre II", "Kibugga Health Centre II", "Kitimba Health Centre III", "Kiziiko Health Centre II", "Kyabadaza Health Centre III", "Ngando Health Centre III",
-"Bulwadda Health Centre III", "Buyanja Health Centre II", "Kanoni Health Centre III", "Kifampa Health Centre III", "Kisozi Health Centre III", "Kitwe Health Centre II", "Kyayi Health Centre III", "Maddu Heal[...]", 
+"Bulwadda Health Centre III", "Buyanja Health Centre II", "Kanoni Health Centre III", "Kifampa Health Centre III", "Kisozi Health Centre III", "Kitwe Health Centre II", "Kyayi Health Centre III", "Maddu Health Centre", 
 "Ngomanene Health Centre III", "Bubeke Health Centre III", "Bufumira Health Centre III", "Bukasa Health Centre IV", "Bwendero Health Centre III", "Jaana Health Centre II", "Kachanga Island Health Centre II",
-"Mulabana Health Centre II", "Ssese Islands African Aids Project Health Centre II", "AHF Uganda Care", "Bukulula Health Centre IV", "Kabaale Health Centre III", "Kalungu Health Centre III", "Kasambya Health[...]", 
-"MRC Kyamulibwa Health Centre II", "Nabutongwa Health Centre II", "Kabira Health Centre III", "Kabuwoko Govt Health Centre III", "Kakuuto Health Centre IV", "Kalisizo General Hospital", "Kasaali Health Cent[...]", 
-"Mitukula Health Centre III", "Mutukula Health Centre III", "Nabigasa Health Centre III", "Ndolo Health Centre II", "Rakai Health Sciences Program Clinic", "Kakoma Health Centre III", "Katovu Health Centre [...]", 
-"Kabayanda Health Centre II", "Kaliiro Health Centre III", "Kasagama Health Centre III", "Kinuuka Health Centre III", "Kyemamba Health Centre II", "Lyakajura Health Centre III", "Lyantonde General Hospital", 
+"Mulabana Health Centre II", "Ssese Islands African Aids Project Health Centre II", "AHF Uganda Care", "Bukulula Health Centre IV", "Kabaale Health Centre III", "Kalungu Health Centre III", "Kasambya Health centre", 
+"MRC Kyamulibwa Health Centre II", "Nabutongwa Health Centre II", "Kabira Health Centre III", "Kabuwoko Govt Health Centre III", "Kakuuto Health Centre IV", "Kalisizo General Hospital", "Kasaali Health Centre", 
+"Mitukula Health Centre III", "Mutukula Health Centre III", "Nabigasa Health Centre III", "Ndolo Health Centre II", "Rakai Health Sciences Program Clinic", "Kakoma Health Centre III", "Katovu Health Centre",
+"Kiwangala Health Centre IV","Kabayanda Health Centre II", "Kaliiro Health Centre III", "Kasagama Health Centre III", "Kinuuka Health Centre III", "Kyemamba Health Centre II", "Lyakajura Health Centre III", "Lyantonde General Hospital", 
 "Masaka Municipal Clinic", "Masaka Police Health Centre III", "Mpugwe Health Centre III", "Nyendo Health Centre III", "TASO Masaka", "Bukakata Health Centre III",
-"Bukeeri Health Centre III", "Buwunga Health Centre III", "Buyaga Health Centre II", "Kamulegu Health Centre III", "Kyanamukaaka Health Centre IV", "Bujuuko Health Centre III", "Bukasa Health Centre II", "Bu[...]", 
-"Buwama Health Centre III", "Buyiga Health Centre III", "Dona Carnevale Medical Centre", "Fiduga Medical Centre", "Ggolo Health Centre III",
-"Kampiringisa Health Centre III", "Kiringente Epi Health Centre II", "Kituntu Health Centre III", "Mpigi Health Centre IV", "Muduuma Health Centre III", "Nabyewanga Health Centre II", "Nindye Health Centre [...]", 
-"Nsamu/Kyali Health Centre III", "Sekiwunga Health Centre III", "St. Elizabeth Kibanga Ihu Health Centre III", "Bugona Health Centre II",
+"Bukeeri Health Centre III", "Buwunga Health Centre III", "Buyaga Health Centre II", "Kamulegu Health Centre III", "Kyanamukaaka Health Centre IV", "Bujuuko Health Centre III", "Bukasa Health Centre II", 
+"Buwama Health Centre III", "Buyiga Health Centre III", "Dona Carnevale Medical Centre", "Fiduga Medical Centre", "Ggolo Health Centre III","Butoolo Health centre III", 
+"Kampiringisa Health Centre III", "Kiringente Epi Health Centre II", "Kituntu Health Centre III", "Mpigi Health Centre IV", "Muduuma Health Centre III", "Nabyewanga Health Centre II", "Nindye Health Centre",
+ "Nsamu/Kyali Health Centre III", "Sekiwunga Health Centre III", "St. Elizabeth Kibanga Ihu Health Centre III", "Bugona Health Centre II",
 "Butiti Health Centre II", "Buyamba Health Centre III", "Byakabanda Health Centre III", "Kacheera Health Centre III",
 "Kasankala Health Centre II", "Kayonza Kacheera Health Centre II", "Kibaale Health Centre II", "Kibanda Health Centre III",
 "Kibuuka Health Centre II", "Kifamba Health Centre III", "Kimuli Health Centre III", "Kyabigondo Health Centre II", "Kyalulangira Health Centre III",
@@ -147,6 +132,14 @@ if submit:
 # ...existing code...
 st.markdown("""---""")
        
+
+
+
+
+
+
+
+
 
 
 
