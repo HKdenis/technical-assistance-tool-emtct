@@ -100,6 +100,7 @@ if submit:
     except Exception as e:
         st.error(f"Failed to save report: {e}")
 
+   # ...existing code...
     # Reset form fields to defaults so the form appears cleared after submit
     defaults = {
         "visit_date": datetime.date.today(),
@@ -114,13 +115,24 @@ if submit:
         "action_plan": "",
         "follow_up_date": datetime.date.today()
     }
-    st.session_state.update(defaults)
 
-st.markdown("""---""")
+    # Set keys individually and ignore any that Streamlit refuses to set
+    for k, v in defaults.items():
+        try:
+            st.session_state[k] = v
+        except Exception:
+            # skip keys that cannot be set during this run
+            pass
+
+    # optional: force a rerun to ensure widgets reflect the cleared state
+    try:
+        st.experimental_rerun()
+    except Exception:
+        pass
 # ...existing code...
-
 st.markdown("""---""")
        
+
 
 
 
