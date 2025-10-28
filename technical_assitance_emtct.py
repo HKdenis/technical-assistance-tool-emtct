@@ -8,6 +8,22 @@ import os
 
 title = st.title("Technical Assistance/Mentorship Report")
 st.markdown("""*MWP EMTCT Team*""")
+import streamlit as st
+
+st.markdown(
+    """
+    <style>
+    .custom-title {
+        font-size: 24px; /* Adjust the desired font size */
+        font-weight: bold;
+        color: #333333;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+st.markdown('<p class="custom-title">This is a custom-sized title</p>', unsafe_allow_html=True)
 
 # Use session_state keys for each widget so we can reset them after submission
 selected_date = st.date_input("VISIT DATE:", format="DD/MM/YYYY", key="visit_date", value=datetime.date.today())
@@ -132,6 +148,7 @@ if submit:
 # ...existing code...
 st.markdown("""---""")
        
+
 
 
 
