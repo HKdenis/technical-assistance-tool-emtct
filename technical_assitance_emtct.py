@@ -118,7 +118,6 @@ if submit:
 
     # Set keys individually and ignore any that Streamlit refuses to set
     for k, v in defaults.items():
-        try:
             st.session_state[k] = v
         #except Exception:
             # skip keys that cannot be set during this run
@@ -132,6 +131,7 @@ if submit:
 # ...existing code...
 st.markdown("""---""")
        
+
 
 
 
