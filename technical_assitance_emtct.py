@@ -120,7 +120,7 @@ if submit:
     for k, v in defaults.items():
             try:
                 st.session_state[k] = v
-        #except Exception:
+        except Exception:
             # skip keys that cannot be set during this run
             pass
 
@@ -132,6 +132,7 @@ if submit:
 # ...existing code...
 st.markdown("""---""")
        
+
 
 
 
