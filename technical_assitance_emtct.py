@@ -84,42 +84,7 @@ if submit:
         "FOLLOW-UP DATE": st.session_state.get("follow_up_date")
     }
 
-# Define the path to your SQLite database file
-# Ensure this path is correct relative to your Streamlit app or an absolute path
-DATABASE_FILE = "my_database.db" 
 
-def create_connection(db_file):
-    """Create a database connection to the SQLite database specified by db_file."""
-    conn = None
-    try:
-        conn = sqlite3.connect(db_file)
-        return conn
-    except sqlite3.Error as e:
-        st.error(f"Error connecting to database: {e}")
-    return conn
-
-def get_data(conn):
-    """Fetch all data from a table (e.g., 'my_table')."""
-    query = "SELECT * FROM my_table" # Replace 'my_table' with your table name
-    try:
-        df = pd.read_sql_query(query, conn)
-        return df
-    except pd.io.sql.DatabaseError as e:
-        st.error(f"Error executing query: {e}")
-        return pd.DataFrame()
-
-# Streamlit app
-st.title("Streamlit and SQLite Integration")
-
-conn = create_connection(DATABASE_FILE)
-
-if conn:
-    st.success(f"Successfully connected to {DATABASE_FILE}")
-
-    # Display data from the database
-    st.subheader("Data from 'my_table':")
-    data_df = get_data(conn)
-    st.dataframe(data_df)
 
     # Example of inserting data (uncomment to use)
     # if st.button("Add Sample Data"):
@@ -167,6 +132,7 @@ else:
 # ...existing code...
 st.markdown("""---""")
        
+
 
 
 
