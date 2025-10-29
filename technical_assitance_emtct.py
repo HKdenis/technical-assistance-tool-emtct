@@ -120,11 +120,12 @@ for k, v in defaults.items():
     # optional: force a rerun to ensure widgets reflect the cleared state
 try:
         st.experimental_rerun()
-    except Exception:
+except Exception:
         pass
 # ...existing code...
 st.markdown("""---""")
        
+
 
 
 
