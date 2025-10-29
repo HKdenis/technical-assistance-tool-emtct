@@ -110,7 +110,7 @@ defaults = {
     }
 
     # Set keys individually and ignore any that Streamlit refuses to set
-    for k, v in defaults.items():
+for k, v in defaults.items():
         try:
             st.session_state[k] = v
         except Exception:
@@ -125,6 +125,7 @@ defaults = {
 # ...existing code...
 st.markdown("""---""")
        
+
 
 
 
