@@ -95,7 +95,7 @@ st.dataframe(df)
 
    # ...existing code...
     # Reset form fields to defaults so the form appears cleared after submit
-    defaults = {
+defaults = {
         "visit_date": datetime.date.today(),
         "district": "",
         "health_facility": "",
@@ -125,6 +125,7 @@ st.dataframe(df)
 # ...existing code...
 st.markdown("""---""")
        
+
 
 
 
