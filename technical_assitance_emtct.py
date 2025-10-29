@@ -104,8 +104,7 @@ st.dataframe(df)
     #         st.experimental_rerun() # Refresh to show new data
     #     except sqlite3.Error as e:
     #         st.error(f"Error adding data: {e}")
-
-    conn.close()
+conn.close()
 else:
     st.warning("Could not connect to the database. Please check the file path.")
    # ...existing code...
@@ -140,6 +139,7 @@ else:
 # ...existing code...
 st.markdown("""---""")
        
+
 
 
 
