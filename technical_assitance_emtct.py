@@ -84,6 +84,14 @@ if submit:
         "FOLLOW-UP DATE": st.session_state.get("follow_up_date")
     }
 
+conn = st.connection("mysql")
+
+@st.cache_data
+def run_query(query):
+    return conn.query(query, ttl=600)
+
+df = run_query("SELECT * FROM my_table;")
+st.dataframe(df)
 
 
     # Example of inserting data (uncomment to use)
@@ -132,6 +140,7 @@ else:
 # ...existing code...
 st.markdown("""---""")
        
+
 
 
 
