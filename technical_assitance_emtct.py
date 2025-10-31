@@ -84,7 +84,7 @@ if submit:
         "FOLLOW-UP DATE": st.session_state.get("follow_up_date")
     }
 
-conn = st.connection("mysql")
+conn = st.connection("Technical_Assistance")
 
 @st.cache_data
 def run_query(query):
@@ -125,6 +125,7 @@ except Exception:
 # ...existing code...
 st.markdown("""---""")
        
+
 
 
 
