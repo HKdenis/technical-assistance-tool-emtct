@@ -1,6 +1,7 @@
-[theme]
-base="light"
-backgroundColor="#9ee0f2ff"
-[theme]
-base="light"
-backgroundColor="#c5dce2"
+ # .streamlit/config.toml
+    [theme]
+    primaryColor = '#FF4B4B'  # Primary accent for interactive elements
+    backgroundColor = '#F0F2F6' # Background color for the main content area
+    secondaryBackgroundColor = '#FFFFFF' # Background color for sidebar and most interactive widgets
+    textColor = '#262730' # Color used for almost all text
+    font = 'sans serif' # Font family for all text (sans serif | serif | monospace)
