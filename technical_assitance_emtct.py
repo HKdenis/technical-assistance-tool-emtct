@@ -67,64 +67,9 @@ action_plan = st.text_area("ACTION PLAN: Recommendations/Follow-up actions agree
 followup_date = st.date_input("FOLLOW-UP DATE", format="DD/MM/YYYY", key="follow_up_date", value=datetime.date.today())
 
 submit = st.button("SUBMIT REPORT")
-
-if submit:
-    # build data dictionary using the widget keys / variables
-    data = {
-        "VISIT DATE": st.session_state.get("visit_date"),
-        "DISTRICT": st.session_state.get("district"),
-        "HEALTH FACILITY": st.session_state.get("health_facility"),
-        "MENTOR/TA PROVIDER": st.session_state.get("mentor"),
-        "ADDITIONAL MENTOR/TA PROVIDER": st.session_state.get("additional_mentor"),
-        "FACILITY TEAM MEMBERS PRESENT": st.session_state.get("facility_team"),
-        "PURPOSE OF THE VISIT": st.session_state.get("purpose"),
-        "KEY ISSUES/GAPS IDENTIFIED": st.session_state.get("key_issues"),
-        "ACTIVITIES DONE TO ADDRESS GAPS": st.session_state.get("activities"),
-        "ACTION PLAN": st.session_state.get("action_plan"),
-        "FOLLOW-UP DATE": st.session_state.get("follow_up_date")
-    }
-
-conn = st.connection("Technical_Assistance")
-
-@st.cache_data
-def run_query(query):
-    return conn.query(query, ttl=600)
-
-df = run_query("SELECT * FROM my_table;")
-st.dataframe(df)
-
-   # ...existing code...
-    # Reset form fields to defaults so the form appears cleared after submit
-defaults = {
-        "visit_date": datetime.date.today(),
-        "district": "",
-        "health_facility": "",
-        "mentor": "",
-        "additional_mentor": "",
-        "facility_team": "",
-        "purpose": "",
-        "key_issues": "",
-        "activities": "",
-        "action_plan": "",
-        "follow_up_date": datetime.date.today()
-    }
-
-    # Set keys individually and ignore any that Streamlit refuses to set
-for k, v in defaults.items():
-        try:
-            st.session_state[k] = v
-        except Exception:
-            # skip keys that cannot be set during this run
-            pass
-
-    # optional: force a rerun to ensure widgets reflect the cleared state
-try:
-        st.experimental_rerun()
-except Exception:
-        pass
-# ...existing code...
 st.markdown("""---""")
        
+
 
 
 
